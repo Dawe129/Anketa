@@ -2,9 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import json
 import os
 import hashlib
+import logging
 
 app = Flask(__name__)
 app.secret_key = "super_tajny_klic_2024"  # Nutné pro session
+
+# Nastavení logování
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename='app.log',
+    filemode='a'  # Přidávat do souboru
+)
 
 # --- Konfigurace ---
 VOTES_FILE = "votes.json"
@@ -81,6 +90,7 @@ def login():
         # Kontrola: existuje tato IP v users.json?
         if ip_hash in users:
             existing_user = users[ip_hash]["username"]
+            logging.warning(f"Pokus o opakované hlasování z IP {ip_hash} (uživatel: {existing_user})")
             return render_template(
                 "login.html",
                 error=f"Z tohoto počítače už hlasoval/a '{existing_user}'. Každý může hlasovat jen jednou."
@@ -89,6 +99,7 @@ def login():
         # IP není v databázi → uložíme jméno do session a pustíme dál
         session["username"] = username
         session["ip_hash"] = ip_hash
+        logging.info(f"Uživatel {username} (IP: {ip_hash}) se přihlásil k hlasování")
         return redirect(url_for("index"))
 
     return render_template("login.html")
@@ -137,6 +148,8 @@ def vote():
     users[ip_hash] = {"username": username, "choice": chosen}
     save_json(USERS_FILE, users)
 
+    logging.info(f"Uživatel {username} (IP: {ip_hash}) hlasoval pro: {chosen}")
+
     # Vymazat session po hlasování
     session.clear()
 
@@ -178,8 +191,10 @@ def reset():
         votes = empty_votes
         users = {}
         total = 0
+        logging.info("Hlasování bylo resetováno správným tokenem")
     else:
         message = "❌ Špatný token. Reset neproveden."
+        logging.warning(f"Pokus o reset se špatným tokenem: {token}")
 
     return render_template(
         "results.html",
@@ -189,6 +204,19 @@ def reset():
         users=users,
         message=message
     )
+
+
+# ── Error handling ───────────────────────────────────────────────
+
+@app.errorhandler(404)
+def not_found(error):
+    logging.error(f"404 Error: {request.url}")
+    return render_template("404.html"), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    logging.error(f"500 Error: {error}")
+    return render_template("500.html"), 500
 
 
 # ── Start ────────────────────────────────────────────────────────

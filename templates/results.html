@@ -39,6 +39,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>IP adresa</th>
                         <th>Jméno</th>
                         <th>Hlasoval/a pro</th>
                     </tr>
@@ -47,6 +48,7 @@
                     {% for ip_hash, info in users.items() %}
                     <tr>
                         <td>{{ loop.index }}</td>
+                        <td><code>{{ ip_hash }}</code></td>
                         <td>{{ info.username }}</td>
                         <td><span class="badge">{{ info.choice }}</span></td>
                     </tr>
