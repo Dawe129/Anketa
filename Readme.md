@@ -84,10 +84,4 @@ Uprav v `app.py`:
 - **Docker nefunguje**: Zkontroluj, jestli je Docker spuštěný.
 - **Žádné logy**: Zkontroluj `app.log` v adresáři.
 
-## 📝 Poznámky
-- Pro produkci změň `app.secret_key` a `RESET_TOKEN`.
-- Data v JSON souborech – zálohuj je pro zachování hlasů.
-- Projekt je určen pro školu/školní účely.
 
-## 🤝 Příspěvky
-Návrhy na vylepšení vítány! Otevři issue nebo pull request.
