@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin přihlášení – Anketa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 Admin přihlášení</h1>
+        <div class="card">
+            <h2>Přihlášení do admin sekce</h2>
+            <p class="subtitle">Zadej své přihlašovací údaje pro přístup k admin výsledkům.</p>
+
+            {% if error %}
+            <div class="message error">{{ error }}</div>
+            {% endif %}
+
+            <form action="/admin/login" method="POST">
+                <div class="field">
+                    <label for="username">Uživatelské jméno</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="admin"
+                        maxlength="50"
+                        autofocus
+                        required
+                    >
+                </div>
+                <div class="field">
+                    <label for="password">Heslo</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Zadej heslo"
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary">➡️ Přihlásit se</button>
+            </form>
+        </div>
+        <a href="/results" class="link">📊 Zpět na výsledky</a>
+    </div>
+</body>
+</html>

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Výsledky – Anketa</title>
+    <title>Admin výsledky – Anketa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>📊 Výsledky</h1>
+        <h1>🔒 Admin výsledky</h1>
 
         <div class="card">
             <h2>{{ question }}</h2>
@@ -34,21 +34,23 @@
 
         {% if users %}
         <div class="card">
-            <h3>👥 Kdo hlasoval</h3>
+            <h3>👥 Kdo hlasoval (s IP adresami)</h3>
             <table class="users-table">
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>IP adresa</th>
                         <th>Jméno</th>
                         <th>Hlasoval/a pro</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for user in users %}
+                    {% for ip_hash, info in users.items() %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ user.username }}</td>
-                        <td><span class="badge">{{ user.choice }}</span></td>
+                        <td><code>{{ info.ip }}</code></td>
+                        <td>{{ info.username }}</td>
+                        <td><span class="badge">{{ info.choice }}</span></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -66,7 +68,7 @@
             </form>
         </div>
 
-        <a href="/" class="link">⬅️ Zpět na přihlášení</a>
+        <a href="/admin/logout" class="link">⬅️ Odhlásit se</a>
     </div>
 </body>
 </html>

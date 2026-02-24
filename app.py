@@ -20,6 +20,9 @@ VOTES_FILE = "votes.json"
 USERS_FILE = "users.json"
 RESET_TOKEN = "tajny123"  # Token pro reset hlasování
 
+ADMIN_USER = "admin"
+ADMIN_PASS = "admin123"
+
 QUESTION = "Jaký je tvůj oblíbený programovací jazyk?"
 OPTIONS = ["a) Python", "b) JavaScript", "c) Java", "d) C++"]
 
@@ -40,11 +43,9 @@ def save_json(filepath: str, data: dict) -> None:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def get_client_ip() -> str:
+def get_client_ip_hash() -> str:
     """
-    Získá skutečnou IP klienta.
-    Bere v úvahu proxy hlavičky (X-Forwarded-For).
-    Vrátí zahashovanou IP pro ochranu soukromí.
+    Získá hash IP klienta pro identifikaci.
     """
     forwarded_for = request.headers.get("X-Forwarded-For")
     if forwarded_for:
@@ -54,6 +55,18 @@ def get_client_ip() -> str:
 
     # Hash IP adresy – nepotřebujeme znát přesnou IP, jen ji identifikovat
     return hashlib.sha256(ip.encode()).hexdigest()[:16]
+
+
+def get_client_ip_real() -> str:
+    """
+    Získá skutečnou IP klienta.
+    """
+    forwarded_for = request.headers.get("X-Forwarded-For")
+    if forwarded_for:
+        ip = forwarded_for.split(",")[0].strip()
+    else:
+        ip = request.remote_addr or "unknown"
+    return ip
 
 
 def init_files() -> None:
@@ -84,7 +97,7 @@ def login():
         if not username:
             return render_template("login.html", error="Zadej prosím své jméno.")
 
-        ip_hash = get_client_ip()
+        ip_hash = get_client_ip_hash()
         users = load_json(USERS_FILE, {})
 
         # Kontrola: existuje tato IP v users.json?
@@ -128,7 +141,8 @@ def vote():
         return redirect(url_for("login"))
 
     username = session["username"]
-    ip_hash = get_client_ip()
+    ip_hash = get_client_ip_hash()
+    ip_real = get_client_ip_real()
 
     # Dvojitá kontrola IP (ochrana proti obejití session)
     users = load_json(USERS_FILE, {})
@@ -144,11 +158,11 @@ def vote():
     votes[chosen] = votes.get(chosen, 0) + 1
     save_json(VOTES_FILE, votes)
 
-    # Uložit uživatele do users.json  →  IP hash: {username, choice}
-    users[ip_hash] = {"username": username, "choice": chosen}
+    # Uložit uživatele do users.json  →  IP hash: {username, choice, ip}
+    users[ip_hash] = {"username": username, "choice": chosen, "ip": ip_real}
     save_json(USERS_FILE, users)
 
-    logging.info(f"Uživatel {username} (IP: {ip_hash}) hlasoval pro: {chosen}")
+    logging.info(f"Uživatel {username} (IP: {ip_real}) hlasoval pro: {chosen}")
 
     # Vymazat session po hlasování
     session.clear()
@@ -162,12 +176,14 @@ def results():
     votes = load_json(VOTES_FILE, {option: 0 for option in OPTIONS})
     users = load_json(USERS_FILE, {})
     total = sum(votes.values())
+    # Pro běžné uživatele skrýt IP adresy
+    users_list = [{"username": info["username"], "choice": info["choice"]} for info in users.values()]
     return render_template(
         "results.html",
         question=QUESTION,
         votes=votes,
         total=total,
-        users=users
+        users=users_list
     )
 
 
@@ -196,14 +212,61 @@ def reset():
         message = "❌ Špatný token. Reset neproveden."
         logging.warning(f"Pokus o reset se špatným tokenem: {token}")
 
+    # Pro běžné uživatele skrýt IP adresy
+    users_list = [{"username": info["username"], "choice": info["choice"]} for info in users.values()]
     return render_template(
         "results.html",
         question=QUESTION,
         votes=votes,
         total=total,
-        users=users,
+        users=users_list,
         message=message
     )
+
+
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    """
+    Přihlášení pro admina.
+    """
+    if request.method == "POST":
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "").strip()
+
+        if username == ADMIN_USER and password == ADMIN_PASS:
+            session["admin"] = True
+            logging.info(f"Admin {username} se přihlásil")
+            return redirect(url_for("admin_results"))
+        else:
+            return render_template("admin_login.html", error="Špatné přihlašovací údaje.")
+
+    return render_template("admin_login.html")
+
+
+@app.route("/admin/results")
+def admin_results():
+    """
+    Admin stránka s výsledky – zobrazuje IP adresy.
+    """
+    if not session.get("admin"):
+        return redirect(url_for("admin_login"))
+
+    votes = load_json(VOTES_FILE, {option: 0 for option in OPTIONS})
+    users = load_json(USERS_FILE, {})
+    total = sum(votes.values())
+    return render_template(
+        "admin_results.html",
+        question=QUESTION,
+        votes=votes,
+        total=total,
+        users=users
+    )
+
+
+@app.route("/admin/logout")
+def admin_logout():
+    session.pop("admin", None)
+    return redirect(url_for("results"))
 
 
 # ── Error handling ───────────────────────────────────────────────
