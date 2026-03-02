@@ -109,7 +109,7 @@ def login():
                 error=f"Z tohoto počítače už hlasoval/a '{existing_user}'. Každý může hlasovat jen jednou."
             )
 
-        # IP není v databázi → uložíme jméno do session a pustíme dál
+        # IP není v databázi → uložíme jméno do  session a pustíme dál
         session["username"] = username
         session["ip_hash"] = ip_hash
         logging.info(f"Uživatel {username} (IP: {ip_hash}) se přihlásil k hlasování")
