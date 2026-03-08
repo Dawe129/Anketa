@@ -284,6 +284,23 @@ def admin_logout():
     return redirect(url_for("results"))
 
 
+# ── HTTPS enforcement ───────────────────────────────────────────
+
+@app.before_request
+def enforce_https():
+    """Vynucení HTTPS.
+
+    Pokud uživatel dorazí na HTTP, přesměrujeme na stejnou URL přes HTTPS.
+    Podpora hlavičky X-Forwarded-Proto pro nasazení na platformách, které
+    ukončují TLS (např. PythonAnywhere, Heroku).
+    """
+    # `request.is_secure` zkontroluje, zda je spojení zabezpečené.
+    # U některých proxy se používá X-Forwarded-Proto.
+    if not request.is_secure and request.headers.get("X-Forwarded-Proto", "http") != "https":
+        url = request.url.replace("http://", "https://", 1)
+        return redirect(url, code=301)
+
+
 # ── Security headers ───────────────────────────────────────────
 
 @app.after_request

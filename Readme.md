@@ -72,6 +72,7 @@ Anketa/
 - **Session management**: Session se vymaže po hlasování.
 - **Token pro reset**: Chráněno tajným tokenem.
 - **CSP**: Server přidává hlavičku `Content-Security-Policy: default-src 'self'` aby zabránil načítání obsahů z jiných domén.
+- **HTTPS redirect**: Veškeré HTTP požadavky jsou přesměrovány na HTTPS automaticky díky `@before_request` hooku; zajišťuje, že komunikace probíhá pouze přes šifrovaný kanál.
 ## ⚙️ Konfigurace
 Uprav v `app.py`:
 | Proměnná | Popis | Výchozí |
