@@ -284,6 +284,18 @@ def admin_logout():
     return redirect(url_for("results"))
 
 
+# ── Security headers ───────────────────────────────────────────
+
+@app.after_request
+def set_security_headers(response):
+    """Přidá základní bezpečnostní hlavičky k každé odpovědi.
+
+    CSP zabrání načítání zdrojů mimo vlastní doménu, což redukuje riziko XSS.
+    """
+    response.headers["Content-Security-Policy"] = "default-src 'self'"
+    return response
+
+
 # ── Error handling ───────────────────────────────────────────────
 
 @app.route("/about")

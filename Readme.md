@@ -71,7 +71,7 @@ Anketa/
 - **Jedno hlasování per IP**: Dvojitá kontrola při přihlášení i hlasování.
 - **Session management**: Session se vymaže po hlasování.
 - **Token pro reset**: Chráněno tajným tokenem.
-
+- **CSP**: Server přidává hlavičku `Content-Security-Policy: default-src 'self'` aby zabránil načítání obsahů z jiných domén.
 ## ⚙️ Konfigurace
 Uprav v `app.py`:
 | Proměnná | Popis | Výchozí |
