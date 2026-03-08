@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výsledky – Anketa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Výsledky</h1>
+
+        <div class="card">
+            <h2>{{ question }}</h2>
+            <p class="total">Celkový počet hlasů: <strong>{{ total }}</strong></p>
+
+            {% if message %}
+            <div class="message {% if '✅' in message %}success{% else %}error{% endif %}">{{ message }}</div>
+            {% endif %}
+
+            <div class="results">
+                {% for option, count in votes.items() %}
+                {% set percent = ((count / total * 100) | round(1)) if total > 0 else 0 %}
+                <div class="result-row">
+                    <span class="result-label">{{ option }}</span>
+                    <div class="bar-wrap">
+                        <div class="bar" style="width: {{ percent }}%"></div>
+                    </div>
+                    <span class="result-count">{{ count }} hlasů ({{ percent }}%)</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if users %}
+        <div class="card">
+            <h3>👥 Kdo hlasoval</h3>
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Jméno</th>
+                        <th>Hlasoval/a pro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.username }}</td>
+                        <td><span class="badge">{{ user.choice }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+
+        <!-- Reset functionality and admin link are intentionally omitted from the public results page.
+             Administrátoři mohou stránku s resetem navštívit ručně zadáním "/reset" nebo se přihlásit přes
+             "/admin/login". Tímto se snižuje útoková plocha pro běžné uživatele. -->
+
+        <a href="/" class="link">⬅️ Zpět na přihlášení</a>
+        <a href="/about" class="link" style="margin-left:1em;">ℹ️ O anketě</a>
+    </div>
+</body>
+</html>

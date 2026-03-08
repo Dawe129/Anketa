@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přihlášení – Anketa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <!-- Google tag (gtag.js) – GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFKPTGGNJ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-SFKPTGGNJ6');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🗳️ Anketa</h1>
+        <div class="card">
+            <h2>Před hlasováním se přihlas</h2>
+            <p class="subtitle">Zadej své jméno, abychom věděli, kdo hlasoval.</p>
+
+            {% if error %}
+            <div class="message error">{{ error }}</div>
+            {% endif %}
+
+            <form action="/login" method="POST">
+                <div class="field">
+                    <label for="username">Tvoje jméno</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Např. Jan Novák"
+                        maxlength="50"
+                        autofocus
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary">➡️ Pokračovat k hlasování</button>
+            </form>
+        </div>
+        <a href="/results" class="link">📊 Zobrazit výsledky bez hlasování</a>
+        <a href="/about" class="link" style="margin-left:1em;">ℹ️ O anketě</a>
+    </div>
+</body>
+</html>

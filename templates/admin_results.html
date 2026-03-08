@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin výsledky – Anketa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 Admin výsledky</h1>
+
+        <div class="card">
+            <h2>{{ question }}</h2>
+            <p class="total">Celkový počet hlasů: <strong>{{ total }}</strong></p>
+
+            {% if message %}
+            <div class="message {% if '✅' in message %}success{% else %}error{% endif %}">{{ message }}</div>
+            {% endif %}
+
+            <div class="results">
+                {% for option, count in votes.items() %}
+                {% set percent = ((count / total * 100) | round(1)) if total > 0 else 0 %}
+                <div class="result-row">
+                    <span class="result-label">{{ option }}</span>
+                    <div class="bar-wrap">
+                        <div class="bar" style="width: {{ percent }}%"></div>
+                    </div>
+                    <span class="result-count">{{ count }} hlasů ({{ percent }}%)</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if users %}
+        <div class="card">
+            <h3>👥 Kdo hlasoval (s IP adresami)</h3>
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>IP adresa</th>
+                        <th>Jméno</th>
+                        <th>Hlasoval/a pro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ip_hash, info in users.items() %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><code>{{ info.ip }}</code></td>
+                        <td>{{ info.username }}</td>
+                        <td><span class="badge">{{ info.choice }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+
+        <div class="card reset-card">
+            <h3>🔒 Reset hlasování</h3>
+            <form action="/reset" method="POST">
+                <div class="reset-row">
+                    <input type="password" name="token" placeholder="Zadej reset token..." class="token-input">
+                    <button type="submit" class="btn btn-danger">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <a href="/admin/logout" class="link">⬅️ Odhlásit se</a>
+    </div>
+</body>
+</html>

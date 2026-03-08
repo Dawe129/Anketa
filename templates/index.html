@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hlasování – Anketa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google tag (gtag.js) – GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFKPTGGNJ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-SFKPTGGNJ6');
+    </script>
+    <!-- konec GA4 kódu -->
+</head>
+<body>
+    <div class="container">
+        <h1>🗳️ Anketa</h1>
+        <div class="card">
+            <p class="greeting">👋 Ahoj, <strong>{{ username }}</strong>!</p>
+            <h2>{{ question }}</h2>
+
+            <form action="/vote" method="POST">
+                <div class="options">
+                    {% for option in options %}
+                    <label class="option-label">
+                        <input type="radio" name="choice" value="{{ option }}" required>
+                        <span class="option-text">{{ option }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary">✅ Hlasovat</button>
+            </form>
+        </div>
+        <a href="/results" class="link">📊 Zobrazit výsledky bez hlasování</a>
+        <a href="/about" class="link" style="margin-left:1em;">ℹ️ O anketě</a>
+    </div>
+</body>
+</html>

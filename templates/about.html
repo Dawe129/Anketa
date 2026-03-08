@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O anketě – Anketa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ℹ️ O anketě</h1>
+
+        <p>Tato anketa se ptá návštěvníků na následující otázku:</p>
+        <blockquote>{{ question }}</blockquote>
+
+        <p>Možnosti jsou:</p>
+        <ul>
+            {% for opt in options %}
+            <li>{{ opt }}</li>
+            {% endfor %}
+        </ul>
+
+        <p>Zaplněné výsledky najdete po hlasování na stránce <a href="/results">výsledků</a>.
+        Administrátoři mají navíc přístup k dalším informacím po přihlášení na adrese
+        <code>/admin/login</code>.</p>
+
+        <p>Pokud objevíte nějakou chybu nebo máte návrh na vylepšení, nahlašte prosím
+        <a href="https://github.com/Dawe129/Anketa/issues" target="_blank" rel="noopener">issue na GitHubu</a>.</p>
+
+        <a href="/" class="link">⬅️ Zpět na přihlášení</a>
+    </div>
+</body>
+</html>
