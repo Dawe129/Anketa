@@ -134,7 +134,6 @@
 2026-02-24 23:34:55,712 - INFO - 127.0.0.1 - - [24/Feb/2026 23:34:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-02-24 23:34:57,449 - INFO - 127.0.0.1 - - [24/Feb/2026 23:34:57] "GET /results HTTP/1.1" 200 -
 2026-02-24 23:34:57,470 - INFO - 127.0.0.1 - - [24/Feb/2026 23:34:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-<<<<<<< HEAD
 2026-03-08 22:02:29,814 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 2026-03-08 22:02:29,814 - INFO - [33mPress CTRL+C to quit[0m
@@ -149,7 +148,7 @@
 2026-03-08 22:02:41,842 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:02:42,136 - ERROR - 404 Error: http://127.0.0.1:5000/favicon.ico
 2026-03-08 22:02:42,137 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2026-03-08 22:02:44,296 - WARNING - Pokus o opakované hlasování z IP 12ca17b49af22894 (uživatel: david)
+2026-03-08 22:02:44,296 - WARNING - Pokus o opakovanï¿½ hlasovï¿½nï¿½ z IP 12ca17b49af22894 (uï¿½ivatel: david)
 2026-03-08 22:02:44,297 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:44] "POST /login HTTP/1.1" 200 -
 2026-03-08 22:02:44,312 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:02:45,488 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:45] "GET /results HTTP/1.1" 200 -
@@ -159,7 +158,7 @@
 2026-03-08 22:02:50,373 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:02:51,528 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:51] "GET /results HTTP/1.1" 200 -
 2026-03-08 22:02:51,549 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-2026-03-08 22:02:54,793 - WARNING - Pokus o reset se špatným tokenem: 
+2026-03-08 22:02:54,793 - WARNING - Pokus o reset se ï¿½patnï¿½m tokenem: 
 2026-03-08 22:02:54,793 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:54] "POST /reset HTTP/1.1" 200 -
 2026-03-08 22:02:54,810 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:02:57,558 - INFO - 127.0.0.1 - - [08/Mar/2026 22:02:57] "[32mGET / HTTP/1.1[0m" 302 -
@@ -185,7 +184,7 @@
 2026-03-08 22:04:29,000 - INFO - 127.0.0.1 - - [08/Mar/2026 22:04:29] "[32mGET / HTTP/1.1[0m" 302 -
 2026-03-08 22:04:29,004 - INFO - 127.0.0.1 - - [08/Mar/2026 22:04:29] "GET /login HTTP/1.1" 200 -
 2026-03-08 22:04:29,057 - INFO - 127.0.0.1 - - [08/Mar/2026 22:04:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-2026-03-08 22:04:31,210 - WARNING - Pokus o opakované hlasování z IP 12ca17b49af22894 (uživatel: david)
+2026-03-08 22:04:31,210 - WARNING - Pokus o opakovanï¿½ hlasovï¿½nï¿½ z IP 12ca17b49af22894 (uï¿½ivatel: david)
 2026-03-08 22:04:31,210 - INFO - 127.0.0.1 - - [08/Mar/2026 22:04:31] "POST /login HTTP/1.1" 200 -
 2026-03-08 22:04:31,222 - INFO - 127.0.0.1 - - [08/Mar/2026 22:04:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:04:32,022 - INFO - 127.0.0.1 - - [08/Mar/2026 22:04:32] "GET /results HTTP/1.1" 200 -
@@ -207,7 +206,7 @@
 2026-03-08 22:09:54,659 - INFO - 127.0.0.1 - - [08/Mar/2026 22:09:54] "[32mGET / HTTP/1.1[0m" 302 -
 2026-03-08 22:09:54,662 - INFO - 127.0.0.1 - - [08/Mar/2026 22:09:54] "GET /login HTTP/1.1" 200 -
 2026-03-08 22:09:54,679 - INFO - 127.0.0.1 - - [08/Mar/2026 22:09:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-2026-03-08 22:09:56,585 - WARNING - Pokus o opakované hlasování z IP 12ca17b49af22894 (uživatel: david)
+2026-03-08 22:09:56,585 - WARNING - Pokus o opakovanï¿½ hlasovï¿½nï¿½ z IP 12ca17b49af22894 (uï¿½ivatel: david)
 2026-03-08 22:09:56,586 - INFO - 127.0.0.1 - - [08/Mar/2026 22:09:56] "POST /login HTTP/1.1" 200 -
 2026-03-08 22:09:56,599 - INFO - 127.0.0.1 - - [08/Mar/2026 22:09:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:09:57,864 - INFO - 127.0.0.1 - - [08/Mar/2026 22:09:57] "GET /results HTTP/1.1" 200 -
@@ -222,7 +221,7 @@
 2026-03-08 22:10:49,810 - INFO - 127.0.0.1 - - [08/Mar/2026 22:10:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:11:01,668 - INFO - 127.0.0.1 - - [08/Mar/2026 22:11:01] "POST /admin/login HTTP/1.1" 200 -
 2026-03-08 22:11:01,681 - INFO - 127.0.0.1 - - [08/Mar/2026 22:11:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-2026-03-08 22:11:25,276 - INFO - Admin admin se pøihlásil
+2026-03-08 22:11:25,276 - INFO - Admin admin se pï¿½ihlï¿½sil
 2026-03-08 22:11:25,278 - INFO - 127.0.0.1 - - [08/Mar/2026 22:11:25] "[32mPOST /admin/login HTTP/1.1[0m" 302 -
 2026-03-08 22:11:25,288 - INFO - 127.0.0.1 - - [08/Mar/2026 22:11:25] "GET /admin/dashboard HTTP/1.1" 200 -
 2026-03-08 22:11:25,303 - INFO - 127.0.0.1 - - [08/Mar/2026 22:11:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
@@ -278,7 +277,7 @@
 2026-03-08 22:13:11,844 - INFO - 127.0.0.1 - - [08/Mar/2026 22:13:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-03-08 22:13:26,900 - INFO - 127.0.0.1 - - [08/Mar/2026 22:13:26] "GET /admin/login HTTP/1.1" 200 -
 2026-03-08 22:13:26,924 - INFO - 127.0.0.1 - - [08/Mar/2026 22:13:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-2026-03-08 22:13:37,063 - INFO - Admin admin se pøihlásil
+2026-03-08 22:13:37,063 - INFO - Admin admin se pï¿½ihlï¿½sil
 2026-03-08 22:13:37,063 - INFO - 127.0.0.1 - - [08/Mar/2026 22:13:37] "[32mPOST /admin/login HTTP/1.1[0m" 302 -
 2026-03-08 22:13:37,071 - INFO - 127.0.0.1 - - [08/Mar/2026 22:13:37] "GET /admin/dashboard HTTP/1.1" 200 -
 2026-03-08 22:13:37,096 - INFO - 127.0.0.1 - - [08/Mar/2026 22:13:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
@@ -325,3 +324,49 @@
 2026-03-08 22:15:13,256 - INFO - 127.0.0.1 - - [08/Mar/2026 22:15:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 =======
 >>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
+2026-03-08 22:33:18,612 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-08 22:33:18,612 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-08 22:33:18,613 - INFO -  * Restarting with stat
+2026-03-08 22:33:18,877 - WARNING -  * Debugger is active!
+2026-03-08 22:33:18,880 - INFO -  * Debugger PIN: 710-246-470
+2026-03-08 22:33:33,685 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:33] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:33:33,696 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:33] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:33:33,745 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:34,068 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:34] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:33:34,072 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:34] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:33:34,126 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:35,967 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:35] "GET /about HTTP/1.1" 200 -
+2026-03-08 22:33:35,993 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:37,210 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:37] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:33:37,213 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:37] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:33:37,229 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:39,546 - WARNING - Pokus o opakovanï¿½ hlasovï¿½nï¿½ z IP 12ca17b49af22894 (uï¿½ivatel: david)
+2026-03-08 22:33:39,546 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:39] "POST /login HTTP/1.1" 200 -
+2026-03-08 22:33:39,564 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:40,332 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:40] "GET /results HTTP/1.1" 200 -
+2026-03-08 22:33:40,344 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:41,616 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:41] "GET /about HTTP/1.1" 200 -
+2026-03-08 22:33:41,636 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:33:42,873 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:42] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:33:42,876 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:42] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:33:42,892 - INFO - 127.0.0.1 - - [08/Mar/2026 22:33:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:49:41,241 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-08 22:49:41,241 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-08 22:49:41,242 - INFO -  * Restarting with stat
+2026-03-08 22:49:41,477 - WARNING -  * Debugger is active!
+2026-03-08 22:49:41,481 - INFO -  * Debugger PIN: 710-246-470
+2026-03-08 22:49:57,257 - INFO - 127.0.0.1 - - [08/Mar/2026 22:49:57] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:49:57,269 - INFO - 127.0.0.1 - - [08/Mar/2026 22:49:57] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:49:57,369 - INFO - 127.0.0.1 - - [08/Mar/2026 22:49:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:49:57,661 - INFO - 127.0.0.1 - - [08/Mar/2026 22:49:57] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:49:57,664 - INFO - 127.0.0.1 - - [08/Mar/2026 22:49:57] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:49:57,712 - INFO - 127.0.0.1 - - [08/Mar/2026 22:49:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:50:04,199 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:04] "GET /about HTTP/1.1" 200 -
+2026-03-08 22:50:04,218 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:50:05,251 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:05] "[32mGET / HTTP/1.1[0m" 302 -
+2026-03-08 22:50:05,254 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:05] "GET /login HTTP/1.1" 200 -
+2026-03-08 22:50:05,270 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-03-08 22:50:05,783 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:05] "GET /results HTTP/1.1" 200 -
+2026-03-08 22:50:05,799 - INFO - 127.0.0.1 - - [08/Mar/2026 22:50:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
