@@ -56,27 +56,12 @@
         </div>
         {% endif %}
 
-<<<<<<< HEAD
         <!-- Reset functionality and admin link are intentionally omitted from the public results page.
              Administrátoři mohou stránku s resetem navštívit ručně zadáním "/reset" nebo se přihlásit přes
              "/admin/login". Tímto se snižuje útoková plocha pro běžné uživatele. -->
 
         <a href="/" class="link">⬅️ Zpět na přihlášení</a>
         <a href="/about" class="link" style="margin-left:1em;">ℹ️ O anketě</a>
-=======
-        <div class="card reset-card">
-            <h3>🔒 Reset hlasování</h3>
-            <form action="/reset" method="POST">
-                <div class="reset-row">
-                    <input type="password" name="token" placeholder="Zadej reset token..." class="token-input">
-                    <button type="submit" class="btn btn-danger">Reset</button>
-                </div>
-            </form>
-        </div>
-
-        <a href="/" class="link">⬅️ Zpět na přihlášení</a>
-        <a href="/admin/login" class="link" style="font-size: 0.8em; color: #666;">Admin</a>
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
     </div>
 </body>
 </html>

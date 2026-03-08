@@ -172,17 +172,10 @@ def vote():
 
 @app.route("/results")
 def results():
-<<<<<<< HEAD
     """Stránka s výsledky – přístupná bez přihlášení.
 
-    POZNÁMKA: Původně šablona veřejně zobrazovala formulář pro reset hlasování (a odkaz
-    na administraci). To zvyšovalo "attack surface" pro běžné návštěvníky. UI bylo
-    odstraněno z `results.html` a administrátor musí přistoupit přes přímou cestu
-    `/reset` nebo `/admin/login`.
+    POZNÁMKA: Ve veřejné šabloně již není formulář pro reset ani odkaz na administraci.
     """
-=======
-    """Stránka s výsledky – přístupná bez přihlášení."""
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
     votes = load_json(VOTES_FILE, {option: 0 for option in OPTIONS})
     users = load_json(USERS_FILE, {})
     total = sum(votes.values())
@@ -238,12 +231,9 @@ def reset():
 def admin_login():
     """
     Přihlášení pro admina.
-<<<<<<< HEAD
 
     Po úspěšném ověření je uživatel přesměrován na `admin_dashboard`, které je nově hlavním
-    administrátorským rozhraním (dřívější `admin_results` bylo přejmenováno).
-=======
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
+    administrátorským rozhraním.
     """
     if request.method == "POST":
         username = request.form.get("username", "").strip()
@@ -252,18 +242,13 @@ def admin_login():
         if username == ADMIN_USER and password == ADMIN_PASS:
             session["admin"] = True
             logging.info(f"Admin {username} se přihlásil")
-<<<<<<< HEAD
             return redirect(url_for("admin_dashboard"))
-=======
-            return redirect(url_for("admin_results"))
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
         else:
             return render_template("admin_login.html", error="Špatné přihlašovací údaje.")
 
     return render_template("admin_login.html")
 
 
-<<<<<<< HEAD
 # staré `/admin/results` ponecháváme jako alias pro kompatibilitu
 @app.route("/admin/results")
 def admin_results():
@@ -277,12 +262,6 @@ def admin_dashboard():
 
     Zobrazuje výsledky, IP adresy hlasujících a formulář pro reset. Dostupné pouze po
     přihlášení jako admin. (Původní obsah byl ve `admin_results.html`.)
-=======
-@app.route("/admin/results")
-def admin_results():
-    """
-    Admin stránka s výsledky – zobrazuje IP adresy.
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
     """
     if not session.get("admin"):
         return redirect(url_for("admin_login"))
@@ -291,11 +270,7 @@ def admin_results():
     users = load_json(USERS_FILE, {})
     total = sum(votes.values())
     return render_template(
-<<<<<<< HEAD
         "admin_dashboard.html",
-=======
-        "admin_results.html",
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
         question=QUESTION,
         votes=votes,
         total=total,
@@ -311,7 +286,6 @@ def admin_logout():
 
 # ── Error handling ───────────────────────────────────────────────
 
-<<<<<<< HEAD
 @app.route("/about")
 def about():
     """
@@ -320,8 +294,6 @@ def about():
     return render_template("about.html", question=QUESTION, options=OPTIONS)
 
 
-=======
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
 @app.errorhandler(404)
 def not_found(error):
     logging.error(f"404 Error: {request.url}")

@@ -6,14 +6,10 @@ Jednoduchá webová aplikace pro hlasování v anketě, napsaná v Pythonu s Fla
 - **Přihlášení jménem**: Uživatel zadá jméno a aplikace kontroluje IP adresu.
 - **Hlasování**: Výběr z předdefinovaných odpovědí.
 - **Výsledky**: Zobrazení počtu hlasů a seznamu hlasujících (s IP hashi).
-<<<<<<< HEAD
 - **Reset**: Správným tokenem lze vynulovat všechna data. (Formulář již není veřejně dostupný v navigaci; administrátor musí zadat `/reset` ručně.)
 
 - **Hlásit chyby**: Pokud najdete problém, vytvořte prosím issue na
   <https://github.com/Dawe129/Anketa/issues>. Díky za pomoc!
-=======
-- **Reset**: Správným tokenem lze vynulovat všechna data.
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
 - **Bezpečnost**: IP adresy se hashují pro ochranu soukromí.
 - **Logování**: Všechny akce se logují do `app.log` pro historii.
 - **Error handling**: 404 a 500 chyby s vlastními stránkami.
@@ -63,15 +59,10 @@ Anketa/
    - IP nová → uložení do session → přesměrování na hlasování.
 2. **Hlasování**: Výběr odpovědi → uložení do `votes.json` a `users.json`.
 3. **Výsledky**: Zobrazení grafu hlasů a tabulky hlasujících.
-<<<<<<< HEAD
 4. **Reset**: Pouze se správným tokenem (`tajny123`) vynuluje data. Formulář byl přesunut do zabezpečeného administrátorského panelu (`/admin/dashboard` po přihlášení). Pro veřejné uživatele zůstávají výsledky dostupné na `/results`.
 
 - **Admin panel**: Přihlášení je možné na `/admin/login`. Po přihlášení se dostanete na `/admin/dashboard` kde jsou k dispozici výsledky s IP, reset a odkazy na další nástroje.
 - **O anketě**: Nová veřejná stránka `/about` poskytuje základní informace o aktuální otázce a možnostech.
-
-=======
-4. **Reset**: Pouze se správným tokenem (`tajny123`) vynuluje data.
->>>>>>> c893286287ea44d2de581ec576f03d13ef98a14d
 
 ## 🔒 Bezpečnost
 - **IP hashování**: IP adresy se hashují (SHA-256) – neukládají se v čitelné podobě.
