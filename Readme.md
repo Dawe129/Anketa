@@ -12,6 +12,7 @@ Jednoduchá webová aplikace pro hlasování v anketě, napsaná v Pythonu s Fla
   <https://github.com/Dawe129/Anketa/issues>. Díky za pomoc!
 - **Bezpečnost**: IP adresy se hashují pro ochranu soukromí.
 - **Favicon**: Stránka nyní používá malou ikonu (vloženou jako SVG) pro lepší rozpoznání v záložkách.
+- **Analytics**: Google Analytics snippet byl odstraněn, aby se předešlo stahování nevyužitého JavaScriptu; lze jej snadno znovu přidat, pokud bude potřeba sledovat události.
 - **Logování**: Všechny akce se logují do `app.log` pro historii.
 - **Error handling**: 404 a 500 chyby s vlastními stránkami.
 
